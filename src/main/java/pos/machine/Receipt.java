@@ -35,15 +35,15 @@ public class Receipt {
         List<ItemInfo> allProducts = ItemDataLoader.loadAllItemInfos();
 
         Map<String, Long> barcodeItemCountMap = countProductByBarcode(barcodes);
-        for (String barcode : barcodeItemCountMap.keySet()) {
+        barcodeItemCountMap.forEach((barcode, count) -> {
             ItemInfo matchedProduct = findProductByBarcode(barcode, allProducts);
             receiptItems.add(new ReceiptItem(
-                    barcode,
-                    matchedProduct.getName(),
-                    matchedProduct.getPrice(),
-                    barcodeItemCountMap.get(barcode).intValue()
+                barcode,
+                matchedProduct.getName(),
+                matchedProduct.getPrice(),
+                barcodeItemCountMap.get(barcode).intValue()
             ));
-        }
+        });
 
         return receiptItems;
     }
