@@ -36,10 +36,6 @@ public class Receipt {
         Map<String, Long> barcodeItemCountMap = countProductByBarcode(barcodes);
         for (String barcode : barcodeItemCountMap.keySet()) {
             ItemInfo matchedProduct = findProductByBarcode(barcode, allProducts);
-            if (matchedProduct == null) {
-                continue;
-            }
-
             receiptItems.add(new ReceiptItem(
                     barcode,
                     matchedProduct.getName(),
