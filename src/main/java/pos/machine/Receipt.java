@@ -1,6 +1,7 @@
 package pos.machine;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -49,9 +50,8 @@ public class Receipt {
 
     private Map<String, Long> countProductByBarcode(List<String> barcodes) {
         return barcodes.stream()
-                .collect(Collectors.groupingBy(barcode -> barcode, Collectors.counting()));
+            .collect(Collectors.groupingBy(barcode -> barcode, LinkedHashMap::new, Collectors.counting()));
     }
-
 
     private ItemInfo findProductByBarcode(String barcode, List<ItemInfo> allProducts) {
         return allProducts.stream()
