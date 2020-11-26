@@ -17,8 +17,8 @@ public class Receipt {
 
     private Integer findTotalAmount() {
         return this.receiptItemList.stream()
-                .map(ReceiptItem::getSubTotal)
-                .reduce(Integer::sum).orElse(0);
+            .map(ReceiptItem::getSubTotal)
+            .reduce(Integer::sum).orElse(0);
     }
 
     public Integer getTotalAmount() {
@@ -55,8 +55,8 @@ public class Receipt {
 
     private ItemInfo findProductByBarcode(String barcode, List<ItemInfo> allProducts) {
         return allProducts.stream()
-                .filter(product -> product.getBarcode().equals(barcode))
-                .findAny()
-                .orElse(null);
+            .filter(product -> product.getBarcode().equals(barcode))
+            .findAny()
+            .orElse(null);
     }
 }

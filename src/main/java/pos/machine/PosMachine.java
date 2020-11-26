@@ -10,30 +10,30 @@ public class PosMachine {
 
     public String buildReceiptMessage(Receipt receipt) {
         return new StringBuilder()
-        .append(generateMessageHeader())
-        .append(generateMessageBody(receipt))
-        .append(generateMessageFooter(receipt))
-        .toString();
+            .append(generateMessageHeader())
+            .append(generateMessageBody(receipt))
+            .append(generateMessageFooter(receipt))
+            .toString();
     }
 
     private String generateMessageBody(Receipt receipt) {
         StringBuilder body = new StringBuilder();
-        for (ReceiptItem receiptItem : receipt.getReceiptItemList()) {
+        receipt.getReceiptItemList().forEach((receiptItem -> {
             body.append(receiptItem.getItemDescription());
             body.append("\r\n");
-        }
+        }));
 
         return body.toString();
     }
 
     private String generateMessageFooter(Receipt receipt) {
         return new StringBuilder("----------------------\r\n")
-        .append(String.format("Total: %s (yuan)", receipt.getTotalAmount()))
-        .append("\r\n**********************")
-        .toString();
+            .append(String.format("Total: %s (yuan)", receipt.getTotalAmount()))
+            .append("\r\n**********************")
+            .toString();
     }
 
     private String generateMessageHeader() {
-        return "***<store earning no money>Receipt ***\r\n";
+        return "***<store earning no money>Receipt***\r\n";
     }
 }

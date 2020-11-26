@@ -19,6 +19,7 @@ public class ReceiptItem extends ItemInfo {
     }
 
     public String getItemDescription() {
-        return String.format("Name: %s, Quantity: %d, Unit price: %d (yuan), Subtotal: %d (yuan)", this.getName(), this.getCount(), this.getPrice(), this.getSubTotal());
+        return String.format("Name: %s, Quantity: %d, Unit price: %d (yuan), Subtotal: %d (yuan)", this.getName(), this.getCount(), this.getPrice(),
+            this.getSubTotal());
     }
 }
